@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; // Link bileşenini ekleyin
+import { Link } from "react-router-dom";
+import "./style.css";
 
 const Homepage = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]); // Original product list
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -11,12 +12,15 @@ const Homepage = () => {
         const data = await response.json();
 
         if (data && Array.isArray(data.data)) {
-          setProducts(data.data);
+          setProducts(data.data); // Set fetched products
+        
+          
+
         } else {
-          console.error("Beklenmeyen veri formatı:", data);
+          console.error("Unexpected data format:", data);
         }
       } catch (error) {
-        console.error("API'den ürünler alınırken hata oluştu:", error);
+        console.error("Error fetching products:", error);
       }
     };
 
@@ -24,7 +28,7 @@ const Homepage = () => {
   }, []);
 
   if (!products.length) {
-    return <p>Ürünler yükleniyor veya bulunamadı.</p>;
+    return <p>Loading products or none available...</p>;
   }
 
   return (
@@ -41,10 +45,9 @@ const Homepage = () => {
             />
             <p>{product.description}</p>
             <p>
-              Fiyat: <strong>${product.discountedPrice}</strong> (Normal Fiyat: ${product.price})
+              Price: <strong>${product.discountedPrice}</strong> (Original Price: ${product.price})
             </p>
-           
-            {/* View Product bağlantısı */}
+            {/* View Product Button */}
             <Link to={`/product/${product.id}`} className="view-product-button">
               View Product
             </Link>

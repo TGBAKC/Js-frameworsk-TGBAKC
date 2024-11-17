@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./style.css"; // Add your styles here
 
-const url = "https://v2.api.noroff.dev/online-shop";
-
-function SearchBar() {
-  const [products, setProducts] = useState([]); 
-  const [searchInput, setSearchInput] = useState("");
-  const [filteredSuggestions, setFilteredSuggestions] = useState([]);
+const SearchBar = () => {
+  const [products, setProducts] = useState([]); // All products from API
+  const [searchInput, setSearchInput] = useState(""); // Input value
+  const [filteredSuggestions, setFilteredSuggestions] = useState([]); // Filtered suggestions
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -14,26 +14,25 @@ function SearchBar() {
       try {
         setIsLoading(true);
         setIsError(false);
-        const response = await fetch(url);
+        const response = await fetch("https://v2.api.noroff.dev/online-shop");
 
         if (!response.ok) {
-          throw new Error("Veri çekme hatası!");
+          throw new Error("Error fetching products");
         }
 
         const data = await response.json();
 
-        console.log("API'den gelen veri:", data); // Burada gelen veriyi kontrol et
-
-        if (Array.isArray(data)) {
-          setProducts(data); // `data` bir dizi ise `products` state'ine kaydet
+        // Check if the API response contains valid data
+        if (data && Array.isArray(data.data)) {
+          setProducts(data.data); // Save products
         } else {
-          console.error("API'den beklenen formatta bir dizi gelmedi.");
-          setProducts([]); // Beklenen formatta değilse products'ı boş dizi olarak ayarla
+          console.error("Unexpected data format:", data);
+          setProducts([]);
         }
 
         setIsLoading(false);
       } catch (error) {
-        console.error("Ürünler çekilirken hata oluştu:", error);
+        console.error("Error fetching products:", error);
         setIsError(true);
         setIsLoading(false);
       }
@@ -42,11 +41,12 @@ function SearchBar() {
     fetchProducts();
   }, []);
 
-  const handleSearchChange = (event) => {
-    const query = event.target.value;
+  const handleSearchChange = (e) => {
+    const query = e.target.value;
     setSearchInput(query);
 
-    if (query.length > 0) {
+    // Filter suggestions dynamically
+    if (query.trim().length > 0) {
       const filtered = products.filter((product) =>
         product.title.toLowerCase().includes(query.toLowerCase())
       );
@@ -56,46 +56,53 @@ function SearchBar() {
     }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Arama yapıldı:", searchInput);
+  const handleSuggestionClick = () => {
+    setSearchInput(""); // Clear the search input
+    setFilteredSuggestions([]); // Clear suggestions
   };
 
-  if (isLoading) {
-    return <div>Loading products...</div>;
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Search initiated with query:", searchInput);
 
-  if (isError) {
-    return <div>Error loading data.</div>;
-  }
+    // Clear search bar and suggestions after submit
+    setSearchInput("");
+    setFilteredSuggestions([]);
+  };
+
+  if (isLoading) return <div>Loading products...</div>;
+  if (isError) return <div>Error fetching products.</div>;
 
   return (
-    <div className="input-group">
-      <form onSubmit={handleSubmit}>
+    <div className="search-bar-container">
+      {/* Search Input */}
+      <form onSubmit={handleSubmit} className="search-bar-form">
         <input
           type="text"
-          name="s"
-          placeholder="Søk"
-          data-all-text="Vis alle resultater"
-          className="form-control form-search-control"
-          autoComplete="off"
+          placeholder="Search products..."
           value={searchInput}
           onChange={handleSearchChange}
+          className="search-input"
         />
         <button type="submit" className="search-btn">
-          <i className="fa fa-search"></i>
+          🔍
         </button>
       </form>
-      {/* Öneri listesi */}
+
+      {/* Suggestions */}
       {filteredSuggestions.length > 0 && (
-        <ul className="suggestions">
+        <ul className="suggestions-list">
           {filteredSuggestions.map((product) => (
-            <li key={product.id}>{product.title}</li>
+            <li key={product.id} className="suggestion-item">
+              <Link to={`/product/${product.id}`} onClick={handleSuggestionClick}>
+                {product.title}
+              </Link>
+            </li>
           ))}
         </ul>
       )}
     </div>
   );
-}
+};
 
 export default SearchBar;

@@ -3,16 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "./CartContext";
 
 const CheckoutPage = () => {
-  const { cart } = useCart();
+  const { cart, removeFromCart } = useCart();
   const navigate = useNavigate();
 
-  // Toplam fiyatı hesaplama
-  const totalPrice = cart.reduce(
-    (total, item) => total + item.discountedPrice,
-    0
-  );
+  const totalPrice = cart.reduce((total, item) => total + item.discountedPrice, 0);
 
-  // Sepet boşsa mesaj göster
   if (cart.length === 0) {
     return <p>Your cart is empty.</p>;
   }
@@ -21,12 +16,13 @@ const CheckoutPage = () => {
     <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
       <h1>Checkout</h1>
       <ul style={{ listStyleType: "none", padding: 0 }}>
-        {cart.map((item, index) => (
+        {cart.map((item) => (
           <li
-            key={index}
+            key={item.id}
             style={{
               display: "flex",
               justifyContent: "space-between",
+              alignItems: "center",
               marginBottom: "15px",
               padding: "10px",
               border: "1px solid #ddd",
@@ -42,6 +38,20 @@ const CheckoutPage = () => {
               alt={item.image.alt || item.title}
               style={{ maxWidth: "100px", borderRadius: "8px" }}
             />
+            <button
+              style={{
+                marginLeft: "10px",
+                padding: "5px 10px",
+                backgroundColor: "#dc3545",
+                color: "white",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+              }}
+              onClick={() => removeFromCart(item.id)}
+            >
+              Remove
+            </button>
           </li>
         ))}
       </ul>
@@ -65,7 +75,7 @@ const CheckoutPage = () => {
             borderRadius: "4px",
             cursor: "pointer",
           }}
-          onClick={() => navigate("/checkout-success")} // Başarı sayfasına yönlendirme
+          onClick={() => navigate("/checkout-success")}
         >
           Checkout
         </button>
