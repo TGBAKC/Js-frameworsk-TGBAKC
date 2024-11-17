@@ -1,0 +1,339 @@
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header Stilleri */
+header {
+  display: flex; /* Flexbox etkinleştir */
+  justify-content: space-between; /* İçerikleri yatayda iki uca yerleştir */
+  align-items: center; /* İçeriği dikeyde ortala */
+  background-color: #333; /* Arka plan rengi */
+  color: white; /* Yazı rengi */
+  padding: 10px 20px; /* İçerik için boşluk */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+}
+
+header h1 {
+  font-size: 24px; /* Başlık boyutu */
+  margin: 0; /* Varsayılan boşlukları kaldır */
+}
+
+header nav {
+  display: flex; /* Navigasyon elemanlarını yatay hizala */
+  gap: 15px; /* Linkler arasında boşluk */
+}
+
+header nav a {
+  color: white; /* Link rengi */
+  text-decoration: none; /* Alt çizgiyi kaldır */
+  font-size: 16px;
+}
+
+header nav a:hover {
+  text-decoration: underline; /* Hover durumunda alt çizgi */
+}
+
+header nav i {
+  margin-right: 5px; /* İkon ile yazı arasında boşluk */
+}
+
+/* Navbar flex düzeni */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo stilizasyonu */
+.logo {
+  width: 100px; /* Logo genişliği */
+  height: auto;
+}
+
+/* Dropdown listesi */
+.dropdown {
+  list-style: none; /* Varsayılan nokta işaretlerini kaldır */
+  display: flex; /* Yatay düzende düzenle */
+  gap: 20px; /* Menü öğeleri arasına boşluk ekle */
+  margin: 0;
+  padding: 0;
+}
+
+/* Liste öğeleri */
+.dropdown li {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover efekti */
+.dropdown li:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+
+.input-group{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+   
+ 
+    margin: 4rem;
+
+}
+.form-control{
+    border-radius: 10px 0 0 10px;
+width: 412px;
+height: 40px;
+border: 1px solid black;
+padding-left: 10px;
+
+}
+.search-btn{
+    color: white;
+    cursor: pointer;
+    background-color: #072f4fc3;
+    width: 40px;
+    border: 1px solid black;
+ height:43px;
+ border-radius: 0 10px 10px  0 ;
+}
+
+
+h1{
+  text-align: center;
+}
+
+.product-list {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  align-items: stretch; 
+  gap: 20px; 
+}
+
+.product-card {
+  display: flex; /* Flexbox kullanımı */
+  flex-direction: column; /* Elemanları dikey sırala */
+  align-items: center; /* Yatayda ortala */
+  justify-content: space-between; /* Elemanlar arasında boşluk bırak */
+  text-align: center; /* Metinleri ortala */
+  padding: 20px; /* İçerik çevresine boşluk */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px;
+  width: 300px; /* Tüm kartlar için sabit genişlik */
+  height: auto; /* Tüm kartlar için sabit yükseklik */
+  box-sizing: border-box; /* Padding'i dahil etmek için */
+}
+
+.product-card img {
+  width: 150px; /* Görsel genişliği */
+  height: 150px; /* Görsel yüksekliği */
+  object-fit: cover; /* Görseli keserek sığdır */
+  border-radius: 5px; /* Görselin köşelerini yuvarla (isteğe bağlı) */
+}
+
+.view-product-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-product-button:hover {
+  background-color: #0056b3;
+}
+
+
+.product-card h2 {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.product-card p {
+  margin: 1px 0;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Product-Page Container */
+.product-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  margin-top: 10rem;
+}
+
+/* Image Container */
+.product-page img {
+  display: block;
+  width: 100%;
+  max-width: 300px; /* Tüm resimler aynı genişlikte olacak */
+  height: auto; /* Oranını koruyarak yükseklik ayarlanır */
+  object-fit: cover; /* Resmi kapsamak için */
+  border-radius: 8px;
+  margin-bottom: 20px;
+ 
+}
+
+/* Product Title */
+.product-page h1 {
+  font-size: 24px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* Product Description */
+.product-page p {
+  font-size: 16px;
+  color: #555;
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* Product Price */
+.product-page .price {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;
+  color: #000;
+}
+
+/* Button */
+.product-page button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.product-page button:hover {
+  background-color: #218838;
+}
+
+
+
+/* ContactPage */
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+
+}
+
+.contact-page h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form Stili */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 20px;
+  
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.form-input,
+.form-textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.form-textarea {
+  resize: none;
+  height: 100px;
+}
+
+/* Submit Butonu */
+.submit-button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  align-self: flex-end;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+
+/* Hata Mesajları */
+.error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
