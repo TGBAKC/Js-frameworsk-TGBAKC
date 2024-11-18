@@ -11,7 +11,7 @@ const CheckoutSuccessPage = () => {
 
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
-      <h1>Order Successful!</h1>
+      <h1>Orde Successful!</h1>
       <p>Your order has been placed successfully. Thank you for shopping with us!</p>
       <Link
         to="/"
