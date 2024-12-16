@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useCart } from "./CartContext";
-import './style.css'; // Eğer aynı dizindeyse
+import { useCart } from "../CartContext/CartContext";
+import "../style.css";
+
 
 
 

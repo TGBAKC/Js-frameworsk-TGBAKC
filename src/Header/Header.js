@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "./CartContext";
+import { useCart } from "../CartContext/CartContext";
 
 const Header = () => {
   const { cart } = useCart();
 
   return (
     <header>
-      <h1>My Shop</h1>
+    <Link to="/">
+        <h1>My Shop</h1>
+      </Link>
       <nav>
         <Link to="/">Home</Link>
         <Link to="/checkout">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./style.css"; // Add your styles here
+import "../style.css";
 
 const SearchBar = () => {
   const [products, setProducts] = useState([]); // All products from API
@@ -22,9 +22,8 @@ const SearchBar = () => {
 
         const data = await response.json();
 
-        // Check if the API response contains valid data
         if (data && Array.isArray(data.data)) {
-          setProducts(data.data); // Save products
+          setProducts(data.data); 
         } else {
           console.error("Unexpected data format:", data);
           setProducts([]);

@@ -1,15 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { CartProvider } from "./CartContext";
-import Header from "./Header";
-import SearchBar from "./SearchBar";
-import Homepage from "./HomePage";
-import ProductPage from "./ProductPage";
-import CheckoutPage from "./CheckoutPage";
-import CheckoutSuccessPage from "./CheckoutSuccessPage"; // Dosya yolunu kontrol edin
-import ContactPage from "./ContactPage";
-import Footer from "./Footer";
+import { CartProvider } from "./CartContext/CartContext";
+import Header from "./Header/Header";
+import SearchBar from "./SearchBar/SearchBar";
+import Homepage from "./Pages/HomePage";
+import ProductPage from "./Pages/ProductPage";
+import CheckoutPage from "./Pages/CheckoutPage";
+import CheckoutSuccessPage from "./Pages/CheckoutSuccessPage"; // Dosya yolunu kontrol edin
+import ContactPage from "./Pages/ContactPage";
+import Footer from "./Footer/Footer";
 import "./style.css";
+
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const App = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "./CartContext";
+import { useCart } from "../CartContext/CartContext";
 
 const CheckoutPage = () => {
   const { cart, removeFromCart } = useCart();
