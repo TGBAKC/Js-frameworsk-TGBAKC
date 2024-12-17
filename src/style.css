@@ -2,6 +2,7 @@ body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
 /* Header Styles*/
@@ -19,6 +20,7 @@ header h1 {
   font-size: 24px;
   margin: 0;
   color: white;
+
 }
 
 header nav {
@@ -50,6 +52,7 @@ header nav i {
 .logo {
   width: 100px; 
   height: auto;
+
 }
 
 .dropdown {
@@ -211,15 +214,21 @@ h1{
   margin: 1px 0;
 }
 
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+main {
+  flex: 1;
+}
+
 footer {
-  background-color: #333;
+  background-color: #333; 
   color: white;
   text-align: center;
   padding: 10px 0;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
 }
 
 /* Product-Page Container */

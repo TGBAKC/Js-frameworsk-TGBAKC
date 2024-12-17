@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../style.css";
+import "../../style.css";
+
 
 const SearchBar = () => {
   const [products, setProducts] = useState([]); // All products from API

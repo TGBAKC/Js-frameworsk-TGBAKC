@@ -1,14 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { CartProvider } from "./CartContext/CartContext";
-import Header from "./Header/Header";
-import SearchBar from "./SearchBar/SearchBar";
+import { CartProvider } from "./Components/CartContext/CartContext";
+import Layout from "./Components/Layout/Layout";
+
+import SearchBar from "./Components/SearchBar/SearchBar";
 import Homepage from "./Pages/HomePage";
 import ProductPage from "./Pages/ProductPage";
 import CheckoutPage from "./Pages/CheckoutPage";
 import CheckoutSuccessPage from "./Pages/CheckoutSuccessPage"; // Dosya yolunu kontrol edin
 import ContactPage from "./Pages/ContactPage";
-import Footer from "./Footer/Footer";
+
 import "./style.css";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -17,7 +18,7 @@ const App = () => {
   return (
     <CartProvider>
       <Router>
-        <Header />
+      <Layout>
         <SearchBar />
         <main>
           <Routes>
@@ -28,7 +29,7 @@ const App = () => {
             <Route path="/contact" element={<ContactPage />} /> 
           </Routes>
         </main>
-        <Footer />
+        </Layout>
       </Router>
     </CartProvider>
   );

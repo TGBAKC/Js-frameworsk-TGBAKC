@@ -5,7 +5,7 @@ import "../style.css";
 
 
 const Homepage = () => {
-  const [products, setProducts] = useState([]); // Original product list
+  const [products, setProducts] = useState([]); 
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -14,7 +14,7 @@ const Homepage = () => {
         const data = await response.json();
 
         if (data && Array.isArray(data.data)) {
-          setProducts(data.data); // Set fetched products
+          setProducts(data.data); 
         
           
 

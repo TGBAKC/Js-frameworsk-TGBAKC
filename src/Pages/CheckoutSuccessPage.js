@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../CartContext/CartContext";
+import { useCart } from "../Components/CartContext/CartContext";
 
 const CheckoutSuccessPage = () => {
   const { clearCart } = useCart();
